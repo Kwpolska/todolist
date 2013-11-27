@@ -1,3 +1,9 @@
+v0.1.1
+======
+
+* Modify the margins a little bit.
+* Remove one useless line. (there are many more)
+
 v0.1.0
 ======
 
