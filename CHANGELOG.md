@@ -1,3 +1,9 @@
+v0.1.1+2014
+===========
+
+* Set the © fields to 2014
+* Regenerated the PDFs for GitHub to say 2014
+
 v0.1.1
 ======
 

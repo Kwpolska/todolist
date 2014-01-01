@@ -61,7 +61,7 @@ License
 For the `.tex` files
 --------------------
 
-Copyright © 2013, Chris “Kwpolska” Warrick.
+Copyright © 2013–2014, Chris “Kwpolska” Warrick.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -95,7 +95,7 @@ OF THIS PRODUCT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 For the `.pdf` files provided on GitHub
 ---------------------------------------
 
-Copyright © 2013, Chris “Kwpolska” Warrick.
+Copyright © 2013–2014, Chris “Kwpolska” Warrick.
 All rights reserved.
 
 Redistribution and use in binary form, with or without modification,
