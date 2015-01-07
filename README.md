@@ -20,25 +20,23 @@ Usage
 * A4 paper
 * Printer
 
-Generation
-----------
+Generating and creating entries
+-------------------------------
 
-* Helvetica Neue or TeX Gyre Heros
+* Helvetica Neue or TeX Gyre Heros (in ttf form)
 
   Use the `\todohelv` setting to toggle between Helvetica Neue [1] and Tex Gyre
   Heros [0].
 
-* Consolas or any other monospace font
-  Set it in `\todomonofont`.  Monospace fonts are not used by the template
-  unless you include it in your `todo.tex`.
-* XeLaTeX
+* XeLaTeX installed
+* A basic understanding of LaTeX syntax
 
-Edition
--------
+Editing the internals
+---------------------
 
 * (most of the time) Hardcore LaTeX skills
 * OCD
-* ability to manipulate long lines (we had 821 characters in one line at one
+* ability to manipulate long lines (had 821 characters in one line at one
   point; fortunately I was able to split it nicely)
 
 In this distribution
@@ -61,7 +59,7 @@ License
 For the `.tex` files
 --------------------
 
-Copyright © 2013–2014, Chris “Kwpolska” Warrick.
+Copyright © 2013–2015, Chris Warrick.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -95,7 +93,7 @@ OF THIS PRODUCT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 For the `.pdf` files provided on GitHub
 ---------------------------------------
 
-Copyright © 2013–2014, Chris “Kwpolska” Warrick.
+Copyright © 2013–2015, Chris Warrick.
 All rights reserved.
 
 Redistribution and use in binary form, with or without modification,

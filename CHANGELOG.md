@@ -1,3 +1,12 @@
+v2015
+=====
+
+* Set the © fields to 2015
+* Regenerate the PDFs for GitHub to say 2015
+* Rebranding of self (in ©)
+* Slight copyediting
+* Changed versioning scheme
+
 v0.1.1+2014
 ===========
 
