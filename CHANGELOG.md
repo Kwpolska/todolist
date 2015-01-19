@@ -1,3 +1,13 @@
+v2015.01
+========
+
+* Created user documentation
+* Simplify some things
+* Changes to the the `todolist.tex` format:
+
+  * You can modify the last three note lines, by using `\nr{}`.
+  * You do not need an `\arrayrulecolor{white}` in your `todolist.tex file`
+
 v2015
 =====
 

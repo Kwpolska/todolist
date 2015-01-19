@@ -11,33 +11,12 @@ I do not want to use XeLaTeX!
 [An empty template][ghrel] is available on GitHub.  You can use it if
 you do not want to customize it in any way.
 
-Prerequisites
-=============
+(You only need a printer and A4 paper to use it.)
 
-Usage
------
+Documentation
+-------------
 
-* A4 paper
-* Printer
-
-Generating and creating entries
--------------------------------
-
-* Helvetica Neue or TeX Gyre Heros (in ttf form)
-
-  Use the `\todohelv` setting to toggle between Helvetica Neue [1] and Tex Gyre
-  Heros [0].
-
-* XeLaTeX installed
-* A basic understanding of LaTeX syntax
-
-Editing the internals
----------------------
-
-* (most of the time) Hardcore LaTeX skills
-* OCD
-* ability to manipulate long lines (had 821 characters in one line at one
-  point; fortunately I was able to split it nicely)
+See the official docs along with [the GitHub release][ghrel].
 
 In this distribution
 ====================
@@ -115,7 +94,7 @@ is permitted provided that the following conditions are met:
 1. Redistributions in printed form may reproduce the above copyright
    notice, this list of conditions, and the following disclaimer in the
    documentation and/or other materials provided with the distribution.
-2. Redistributions in printed form should not reproduce the above
+2. Redistributions in printed form need not reproduce the above
    copyright notice, this list of conditions, and the following
    disclaimer on the product itself.
 3. The author of this product must be attributed in the documentation

@@ -2,18 +2,17 @@
 % See /LICENSE (in the distribution) for licensing information.
 
 % Which todolist in the year is this?
-\def \todonumber   {1}
+\def \todonumber       {1}
     % Or maybe you want to leave the number field empty [1]?
     \def \todonumempty {0}
     % Or hide it altogether?
     \def \todonumhide  {0}
 % Which year it is that you want displayed?
-\def \todoyear     {\the\year}
+\def \todoyear         {\the\year}
 % Do you want to use Helvetica Neue [1] or TeX Gyre Heros [0]?
-\def \todohelv     {1}
-% What is your favorite monospace font? (not used unless you do it in your
-% todo.tex)
-\def \todomonofont {Consolas}
+\def \todohelv         {1}
+% What is your favorite monospace font? (not used unless you do it in your tasks)
+\def \todomonofont     {Consolas}
 \def \todoprint {
 % number completed[01] priority[0123] tag task month day notes
 \trd{1}{0}{1}{K}{Print out a new todo-list}{12}{31}{arguably Jan 1}
@@ -51,6 +50,13 @@ zeroes]}{1}{1}{}
 \trd{32}{}{}{}{}{}{}{}
 \trd{33}{}{}{}{}{}{}{}
 \trd{34}{}{}{}{}{}{}{}\arrayrulecolor{black}
-\trd{35}{}{}{}{}{}{}{}\arrayrulecolor{white}
-%%% WARNING: leave the \arrayrulecolor’s in for superior visual experience
+\trd{35}{}{}{}{}{}{}{}
+%%% WARNING: leave the `\arrayrulecolor` in for superior visual experience
+
+%%% Three lines of notes go below.  Leave empty or type in content.
+%%% WARNING: make sure not to overflow the lines, as no wrapping occurs.
+%%%          The line will be inserted as-is; ragged-right.
+\nr{Long notes go here.}
+\nr{No line wrapping.  Text is ragged-right; input is per-line.}
+\nr{Copyright © 2013-2015, Chris Warrick.}
 }

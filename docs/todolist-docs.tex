@@ -1,0 +1,419 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\documentclass[a4paper,english]{report}
+\usepackage{fixltx2e}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage[final,factor=1100,stretch=10,shrink=10]{microtype}
+\newfontfeature{Microtype}{protrusion=default;expansion=default;}
+\usepackage{lmodern}
+\setsansfont[Microtype,Ligatures={NoRequired,NoCommon,NoContextual}]{Helvetica} % ligatures in sans-serifs are ugly and unnecessary.
+\setmonofont[]{Consolas} % …and in monospace fonts, they are dumb
+%\newfontfamily{\helv}[Microtype,Ligatures={NoRequired,NoCommon,NoContextual},Numbers=Lining]{Helvetica}
+%\newcommand{\helvetica}[1]{{\helv #1}}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{enumerate}
+\usepackage{hyphenat}
+\usepackage{setspace}
+\usepackage{marginnote}
+\setlength{\parindent}{0pt}
+\usepackage{xfrac}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{paralist}
+\usepackage{verbatim}
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{xltxtra}
+\usepackage[unicode, colorlinks, breaklinks, pdftitle={To Do List documentation},pdfauthor={Warrick, Chris}]{hyperref}
+\usepackage{upquote}
+\def\hypdate{\kern.1em-\kern.1em}
+\def\ndash{\ts--\hskip.25em}
+\def\mdash{\ts---\hskip.25em}
+\onehalfspacing
+\nonfrenchspacing
+\setlength{\parskip}{0.5em}
+\numberwithin{equation}{section}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\usepackage{titlesec}
+
+\titleformat{\part}[display]{\normalfont\Huge\filcenter}{\fontsize{36pt}{1pc}\selectfont\textsc{Part} \textsf{\thepart}}{0.5pt}{\titlerule\vspace{0.25pc}\fontsize{48pt}{1.2pt}\selectfont}
+\titleformat{\chapter}[display]{\normalfont\Large\filcenter}{\textsc{\chaptertitlename}\Huge{} \textsf{\thechapter}}{0.5pt}{\titlerule\vspace{0.25pc}\Huge}
+\titleformat{\section}{\normalfont\LARGE}{\normalsize §\Huge\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\Large}{\footnotesize §\huge\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\large}{\scriptsize §\LARGE\thesubsubsection}{0.5em}{}
+\titleformat{\paragraph}[runin]{\bf}{¶\theparagraph}{1em}{}
+\titleformat{\subparagraph}[runin]{\bf}{\rm¶\bf\thesubparagraph}{1em}{}
+
+\titlespacing{\section}{0em}{0.1em}{0.1em}[0em]
+\titlespacing{\subsection}{0em}{0.1em}{0.1em}[0em]
+\titlespacing{\subsubsection}{0em}{0.1em}{0.1em}[0em]
+\date{}
+\newcommand{\iid}[1]{\textbf{Item ID:} \texttt{#1}}
+\newcommand{\val}[1]{\textbf{Accepted values:} #1}
+\newcommand{\eg}[1]{\doublespacing\textbf{Example:} \textsf{#1}\onehalfspacing}
+\definecolor{ngray}{gray}{0.30}
+\definecolor{tabgray}{gray}{0.65}
+\definecolor{backgray}{gray}{0.55}
+\definecolor{dategray}{gray}{0.85}
+\setlength{\fboxsep}{1pt}
+\newcommand{\fcb}[1]{\fcolorbox{backgray}{black}{#1}}
+\newcommand{\sps}[0]{\hskip2pt}
+\newcommand{\ltc}[2]{\texttt{\textbackslash#1\{#2\}}}
+\newcommand{\ltcs}[1]{\texttt{\textbackslash#1}}
+\newcommand{\ltv}[1]{\texttt{\{#1\}}}
+\newcommand{\ltve}[1]{\texttt{\{}\emph{#1}\texttt{\}}}
+\newcommand{\ltvh}[1]{\texttt{\{}\textsf{#1}\texttt{\}}}
+\def \todosize {30.03em}
+\begin{document}
+\title{\emph{To Do List} documentation}
+\author{Chris Warrick}
+\date{2015-01-19 (v2015.01)}
+\maketitle
+\tableofcontents{}
+
+\vfill
+
+\emph{The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”,  “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119.}
+
+\chapter{The \emph{To Do} List}
+
+The To Do list is a template for paper-based To Do/task lists.  It is a simplistic template, which can also be customized to the user’s liking.  The List itself does not force any techniques, as pretty much anything can be written on the list.
+
+The list MAY be filled in pen or by using a \texttt{todoentries.tex} file.  Both MAY be used at the same time.
+
+\section{Fields}
+
+\label{fields}
+
+The To Do list features 7 fields, and one of them has two subfields.  More information on customization is available in §\ref{deftrd}.
+
+\subsection{Task Number (\#)}
+
+\iid{1} \\
+\val{\(n \in \left[1, 35\right]\)} \\
+\eg{
+\begin{tabular}{!{\color{tabgray}\vline}c!{\color{tabgray}\vline}}\arrayrulecolor{tabgray}\hline1 \\\hline\end{tabular}
+}
+
+Tasks on the list MUST be numbered.  A list SHOULD contain \textbf{35} tasks.  If you want to \emph{delete} a task, just circle its number.
+
+\subsection{Completion (C)}
+
+\iid{2} \\
+\val{\(c \in \left\{0, 1\right\}\)} \\
+\eg{\begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-1}
+\textcolor{backgray}{\sps\fbox{C}\sps}&\\\cline{1-1}
+\end{tabular} \begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-1}
+\textcolor{backgray}{\sps\fcb{C}\sps}&\\\cline{1-1}
+\end{tabular}}
+
+Task completion is marked in this box.  A completed task has its \textsf{\textcolor{backgray}{\fbox{C}}} square colored in. 
+
+\subsection{Priority}
+
+\iid{3} \\
+\val{\(p \in \left\{1, 2, 3\right\}\)} \\
+\eg{\begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-1}
+\textcolor{backgray}{\sps\fbox{1}\sps\fbox{2}\sps\fbox{3}\sps}&\\\cline{1-1}
+\end{tabular} \begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-1}
+\textcolor{backgray}{\sps\fcb{1}\sps\fbox{2}\sps\fbox{3}\sps}&\\\cline{1-1}
+\end{tabular} \begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-1}
+\textcolor{backgray}{\sps\fbox{1}\sps\fcb{2}\sps\fbox{3}\sps}&\\\cline{1-1}
+\end{tabular} \begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-1}
+\textcolor{backgray}{\sps\fbox{1}\sps\fbox{2}\sps\fcb{3}\sps}&\\\cline{1-1}
+\end{tabular}}
+
+Task priority, \textsf{\textcolor{backgray}{\fbox{1}} – \textcolor{backgray}{\fbox{3}}} is marked in this field.  The desired priority is colored in.
+
+\subsection{Tag}
+
+\iid{4} \\
+\val{one or two letters} \\
+\eg{\begin{tabular}{!{\color{tabgray}\vline}@{}p{2em}@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-1}
+\centering \textcolor{backgray}{T} &\\\cline{1-1}
+\end{tabular} \begin{tabular}{!{\color{tabgray}\vline}@{}p{2em}@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-1}
+\centering W &\\\cline{1-1}
+\end{tabular}}
+
+One– or two–letter tags are shown in this field.  (\textsf{\textcolor{backgray}{T}} is shown if none is filled in, \textsf{T} as a tag is also possible)
+
+\subsection{Task}
+
+\iid{5} \\
+\val{text} \\
+\eg{\begin{tabular}{!{\color{tabgray}\vline}@{}p{\todosize}@{}!{\color{tabgray}\vline}}
+\arrayrulecolor{tabgray}\hline{}\\\hline\end{tabular}}
+
+This is the task itself.  You can insert \ltc{todosub}{} to get an indent and a \textsf{|\kern-2.5pt—} character for subtasks.
+
+\subsection{Due Date}
+
+\eg{
+\begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-5}
+\phantom{|}\the\year\phantom{|} &
+\centering \textcolor{backgray}{M} &
+\centering \textcolor{backgray}{M} &
+\centering \textcolor{backgray}{D} &
+\centering \textcolor{backgray}{D} & \\
+\cline{1-5}
+\end{tabular} \begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-5}
+\phantom{|}\the\year\phantom{|} &
+\centering 1 &
+\centering 2 &
+\centering 3 &
+\centering 1 & \\
+\cline{1-5}
+\end{tabular}
+}
+
+The Due Date is split into 3 fields:
+
+\subsubsection{Year}
+
+\iid{\rm n/a (uses \ltcs{todoyear})} \\
+\eg{\begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}}
+\arrayrulecolor{tabgray}\hline{}\phantom{|}\the\year\phantom{|}\\\hline\end{tabular}}
+
+The year is always printed automatically, even in “empty” lists.  (A New Year is a great occasion to complete all old tasks!)
+
+\subsubsection{Month}
+
+\iid{6} \\
+\val{\(m \in \left[1, 12\right]\)} \\
+\eg{\begin{tabular}{!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-2}
+\centering \textcolor{backgray}{M} &\centering \textcolor{backgray}{M} &\\\cline{1-2}
+\end{tabular} \begin{tabular}{!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-2}
+\centering 1 &\centering 2 &\\\cline{1-2}
+\end{tabular}}
+
+Note there is one input field, which is split into two for printing.
+
+\subsubsection{Day}
+
+\iid{7} \\
+\val{\(d \in \left[1, 31\right]\)} \\
+\eg{\begin{tabular}{!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-2}
+\centering \textcolor{backgray}{D} &\centering \textcolor{backgray}{D} &\\\cline{1-2}
+\end{tabular} \begin{tabular}{!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}l}
+\arrayrulecolor{tabgray}\cline{1-2}
+\centering 3 &\centering 1 &\\\cline{1-2}
+\end{tabular}}
+
+\subsection{Notes}
+
+\iid{8} \\
+\val{text} \\
+\eg{
+\begin{tabular}{!{\color{black}\vline}p{7em}l}\arrayrulecolor{tabgray}&\\\cline{1-2}\end{tabular}
+\begin{tabular}{!{\color{black}\vline}p{7em}l}\arrayrulecolor{tabgray}A Note.&\\\cline{1-2}\end{tabular}
+}
+
+Warning: notes are \textbf{not} checked for length.  You MUST take care of it yourself.  If you overflow the \texttt{7em} available, the entire layout will break.
+
+\section{Big note area}
+
+At the end of the list, three extra gray lines are available for notes.  Each takes up an entire row.  You MUST take care of line length yourself.
+
+The lines can be used for any information: for example, you can describe the project, or make some extra notes about some of the tasks.
+
+More information about customizing the area is available in §\ref{defnr} in the next chapter.
+
+\chapter{Customization}
+\label{customization}
+\section{Prerequisites}
+
+In order to generate a customized copy of the list, you need:
+
+\begin{itemize}
+\item A copy of Helvetica Neue \textbf{or} \TeX{} Gyre Heros on your system (system font, not \TeX{} font!)
+\item \XeLaTeX{} installed on your system
+\item A basic understanding on the \TeX{}/\LaTeX{} syntax, special characters and commands
+\end{itemize}
+
+\section{Basic customization (one-file)}
+\label{basic}
+
+The to-do list can be easily customized.  There are two ways to customize it.
+
+You can set up some of the most basic things in the main \texttt{todolist.tex} file.  The settings are under the \texttt{SETTINGS FOR THE TODOLIST} section.
+
+You must set \ltcs{todousefile} to \texttt{\{0\}} in \texttt{todolist.tex} if you want to use this method of customization.
+
+A setting is written as a \TeX-style definition, eg. \texttt{\ltcs{def} \ltcs{todousefile} \{0\}}
+
+The following things can be customized with the basic customization:
+
+\begin{enumerate}
+\item \ltcs{todonumber} — Number of the to-do list (displayed as \sf\large\color{tabgray}\fbox{\hskip0.388em\color{white}0\color{ngray}1}\hskip0.1em/\the\year\color{black}\rm\normalsize; \emph{default} \ltv{1})
+\begin{enumerate}
+ \item \ltcs{todonumempty} — If set to \ltv{1}, the field will be left empty so you can write it in pen. (\emph{default} \ltv{0})
+ \item \ltcs{todonumhide} — If set to \ltv{1}, the number/year field will not be displayed. (\emph{default} \ltv{0})
+\end{enumerate}
+\item \ltcs{todoyear} — The year displayed alongside the To Do number (see above) and in the Due Date field (\emph{default} \ltv{\ltcs{the}\ltcs{year}})
+\item \ltcs{todohelv} — font to use.  If set to \ltv{1} (\emph{default}), Helvetica Neue will be used.  If set to \ltv{0}, \TeX{} Gyre Heros will be used instead.  The font \textbf{must} be installed on the system (as a “standard” system font and not a \TeX{} font!)
+\item \ltcs{todomonofont} — monospace font to use (\emph{default} \ltv{Consolas}).  The list itself does not care; it is used only if you use it in your \texttt{todolist.tex} file.  The font \textbf{must} be installed on the system (as a “standard” system font and not a \TeX{} font!)
+\end{enumerate}
+
+\section{Full customization (two-file)}
+
+You can also use a \texttt{todolist.tex} file.  This has the added benefit of being able to fully customize the items displayed — for example, if you have some (or all) tasks already planned and want them on the list, you can type them in a special file, include it, and print out a ready-made list.
+
+You must set \ltcs{todousefile} to \ltv{1} in \texttt{todolist.tex} if you want to use this method of customization.  You must also set \ltc{todoentriespath }{} to a path to the file (it can be relative, and it can have any file name you like).  The file MUST define all 35 fields (leaving them empty is possible) and the 3 note fields.  It SHOULD contain the Basic settings mentioned above (they will override the ones set back in \texttt{todolist.tex})
+
+The easiest way to get started is to copy-paste the pre-existing \texttt{todoentries.tex} included with the distribution.
+
+\subsection{Basic settings in \emph{todoentries.tex}}
+
+A \texttt{todoentries.tex} file SHOULD start by re-defining the Basic settings (see §\ref{basic}). \ltcs{todousefile} and \ltcs{todoentriespath} MUST NOT be defined in this file.  Existing settings in \texttt{todolist.tex} will be overridden.
+
+\subsection{Tasks and Notes}
+\label{tasksnotes}
+After the setting definitions, \ltcs{todoprint} is defined.  This is the \emph{most crucial part} of the file.  It SHOULD contain 35 lines of tasks (by using \ltc{trd}{}) and 3 lines of tasks (by using \ltc{nr}{}).
+
+\emph{Between tasks \#34 and \#35, you SHOULD insert \ltc{arrayrulecolor}{black} so that the last task has a black border at the bottom.}
+
+\subsubsection{Defining tasks}
+\label{deftrd}
+
+The first 35 lines of \ltcs{todoprint} MUST be tasks.  Each line is defined by using:
+
+\hskip3em\ltcs{trd}\ltve{number}\ltve{completion}\ltve{priority}\ltve{tag}\ltve{task}\ltve{due-month}\ltve{due-day}\ltve{notes}
+
+Refer to §\ref{basic} for an exact description of the fields.  The \textbf{Item ID} corresponds to the number of the argument above (starting from zero).  Each field can be left empty (as \ltv{}).
+
+Here is a sample line:
+
+\hskip3em\ltcs{trd}\ltvh{1}\ltvh{0}\ltvh{2}\ltvh{Q}\ltvh{Sample Task}\ltvh{12}\ltvh{31}\ltvh{Extra notes}
+
+This results in the creation of the \textsf{1}st task, \textsf{Sample Task}, which is incomplete (\textsf{\textcolor{backgray}{\fbox{C}}}), with priority \textsf{\textcolor{backgray}{\fbox{1}\sps\fcb{2}\sps\fbox{3}}}, its tag set to \textsf{Q}, due on 2015-\textsf{12}-\textsf{31}, including some \textsf{Extra notes}.
+
+As an alternative, empty lists can use a shorter command that produces an empty row, which takes only the number:
+
+\hskip3em\ltcs{tr}\ltve{number}
+
+\emph{Between tasks \#34 and \#35, you SHOULD insert \ltc{arrayrulecolor}{black} so that the last task has a black border at the bottom.}
+
+\subsubsection{Defining notes}
+\label{defnr}
+
+The last three lines of \ltcs{todoprint} MUST be notes.  Each line is defined by using:
+
+\hskip3em\ltcs{nr}\ltve{contents}
+
+Where \emph{contents} is the contents of this line.  You MAY leave the contents empty.  You MUST watch the line length; the list does \textbf{not} offer text reflowing.  A line that is too long will \textbf{break the layout}.
+
+\section{\emph{For experts:} Editing the \TeX{} code itself}
+
+Actually editing the underlying \TeX{} code in \texttt{todolist.tex} is hard and requires some expert knowledge and a lot of tinkering.  Some of the things are implemented using kludges, or rely on some faulty behavior.
+
+For example, you need to make sure that \ltcs{todowidth} is defined properly.  The definition depends on the font used, and is determined (\(\neq\) calculated!) by manually adjusting the value until the \ltcs{titlerule} and the black table boundary line up.  Another metric you need to take care of is \ltcs{todotitleskip}, which is used so the number box and the Tag box line up — in \emph{both} fonts, if possible.
+
+\chapter{Copyright and Licensing}
+\label{lic}
+
+\section{\TeX{} code and the documentation}
+
+Copyright © 2013–2015, Chris Warrick.  \\
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+\begin{enumerate}
+\item Redistributions of source code must retain the above copyright
+   notice, this list of conditions, and the following disclaimer.
+
+\item Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions, and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+
+\item Neither the name of the author of this product nor the names of
+   contributors to this product may be used to endorse or promote
+   products derived from this product without specific prior written
+   consent.
+\end{enumerate}
+
+THIS PRODUCT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+“AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS PRODUCT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+\pagebreak
+
+\section{Sample PDFs}
+
+Copyright © 2013–2015, Chris Warrick. \\
+All rights reserved.
+
+Redistribution and use in binary form, with or without modification,
+are permitted provided that the following conditions are met:
+
+\begin{enumerate}
+\item Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions, and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+\item Neither the name of the author of this product nor the names of
+   contributors to this product may be used to endorse or promote
+   products derived from this product without specific prior written
+   consent.
+\item The author of this product must be attributed in the documentation
+   and/or other materials provided with the distribution.
+\end{enumerate}
+
+Redistribution and use in printed form, with or without modification,
+is permitted provided that the following conditions are met:
+
+\begin{enumerate}
+\item Redistributions in printed form may reproduce the above copyright
+   notice, this list of conditions, and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+\item Redistributions in printed form need not reproduce the above
+   copyright notice, this list of conditions, and the following
+   disclaimer on the product itself.
+\item The author of this product must be attributed in the documentation
+   and/or other materials provided with the distribution.
+\end{enumerate}
+
+THIS PRODUCT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+“AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS PRODUCT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+\end{document}
