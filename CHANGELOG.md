@@ -1,3 +1,10 @@
+v2016.01
+========
+
+* Set the © fields to 2016
+* Regenerate the PDFs for GitHub to say 2016
+* Minor typo fixes in documentation
+
 v2015.01
 ========
 

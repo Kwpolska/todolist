@@ -1,13 +1,12 @@
-% !TEX TS-program = xelatex
+% !TEX TS-program = lualatex
 % !TEX encoding = UTF-8 Unicode
 \documentclass[a4paper,english]{report}
 \usepackage{fixltx2e}
 \usepackage{fontspec}
 \usepackage{polyglossia}
-\usepackage[final,factor=1100,stretch=10,shrink=10]{microtype}
-\newfontfeature{Microtype}{protrusion=default;expansion=default;}
+\usepackage[final,factor=1100,stretch=10,shrink=10,protrusion,expansion]{microtype}
 \usepackage{lmodern}
-\setsansfont[Microtype,Ligatures={NoRequired,NoCommon,NoContextual}]{Helvetica} % ligatures in sans-serifs are ugly and unnecessary.
+\setsansfont[]{Helvetica} % ligatures in sans-serifs are ugly and unnecessary.
 \setmonofont[]{Consolas} % …and in monospace fonts, they are dumb
 %\newfontfamily{\helv}[Microtype,Ligatures={NoRequired,NoCommon,NoContextual},Numbers=Lining]{Helvetica}
 %\newcommand{\helvetica}[1]{{\helv #1}}
@@ -77,7 +76,7 @@
 \begin{document}
 \title{\emph{To Do List} documentation}
 \author{Chris Warrick}
-\date{2015-01-19 (v2015.01)}
+\date{2016-01-01 (v2016.01)}
 \maketitle
 \tableofcontents{}
 
@@ -249,7 +248,7 @@ In order to generate a customized copy of the list, you need:
 
 \begin{itemize}
 \item A copy of Helvetica Neue \textbf{or} \TeX{} Gyre Heros on your system (system font, not \TeX{} font!)
-\item \XeLaTeX{} installed on your system
+\item Lua\LaTeX{} or Xe\LaTeX{} installed on your system
 \item A basic understanding on the \TeX{}/\LaTeX{} syntax, special characters and commands
 \end{itemize}
 
@@ -336,7 +335,7 @@ For example, you need to make sure that \ltcs{todowidth} is defined properly.  T
 
 \section{\TeX{} code and the documentation}
 
-Copyright © 2013–2015, Chris Warrick.  \\
+Copyright © 2013–2016, Chris Warrick.  \\
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -373,7 +372,7 @@ OF THIS PRODUCT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 \section{Sample PDFs}
 
-Copyright © 2013–2015, Chris Warrick. \\
+Copyright © 2013–2016, Chris Warrick. \\
 All rights reserved.
 
 Redistribution and use in binary form, with or without modification,

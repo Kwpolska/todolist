@@ -3,10 +3,10 @@ Chris Warrick’s LaTeX Todo List
 
 I believe that the best way to manage things to do is an analog piece of
 paper.  Those pieces of paper come out of a nicely crafted template,
-courtesy of XeLaTeX.
+courtesy of LuaLaTeX (or XeLaTeX).
 
-I do not want to use XeLaTeX!
-=============================
+I do not want to use LuaLaTeX/XeLaTeX!
+======================================
 
 [An empty template][ghrel] is available on GitHub.  You can use it if
 you do not want to customize it in any way.
@@ -38,7 +38,7 @@ License
 For the `.tex` files
 --------------------
 
-Copyright © 2013–2015, Chris Warrick.
+Copyright © 2013–2016, Chris Warrick.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -72,7 +72,7 @@ OF THIS PRODUCT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 For the `.pdf` files provided on GitHub
 ---------------------------------------
 
-Copyright © 2013–2015, Chris Warrick.
+Copyright © 2013–2016, Chris Warrick.
 All rights reserved.
 
 Redistribution and use in binary form, with or without modification,
