@@ -1,7 +1,7 @@
 v2016.08
 ========
 
-* Rewrite the `\tr` (table row) macro in Lua
+* Rewrite the `\tr` and `\trd` (table row) macros in Lua
 * Require LuaLaTeX (XeLaTeX is not supported anymore)
 
 v2016.01
