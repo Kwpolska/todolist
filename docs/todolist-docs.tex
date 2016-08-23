@@ -1,12 +1,11 @@
 % !TEX TS-program = lualatex
 % !TEX encoding = UTF-8 Unicode
 \documentclass[a4paper,english]{report}
-\usepackage{fixltx2e}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \usepackage[final,factor=1100,stretch=10,shrink=10,protrusion,expansion]{microtype}
 \usepackage{lmodern}
-\setsansfont[]{Helvetica} % ligatures in sans-serifs are ugly and unnecessary.
+\setsansfont[]{Helvetica Neue OTF} % ligatures in sans-serifs are ugly and unnecessary.
 \setmonofont[]{Consolas} % …and in monospace fonts, they are dumb
 %\newfontfamily{\helv}[Microtype,Ligatures={NoRequired,NoCommon,NoContextual},Numbers=Lining]{Helvetica}
 %\newcommand{\helvetica}[1]{{\helv #1}}
@@ -31,7 +30,6 @@
 \usepackage{mathtools}
 \usepackage{multirow}
 \usepackage{tabularx}
-\usepackage{xltxtra}
 \usepackage[unicode, colorlinks, breaklinks, pdftitle={To Do List documentation},pdfauthor={Warrick, Chris}]{hyperref}
 \usepackage{upquote}
 \def\hypdate{\kern.1em-\kern.1em}
@@ -76,7 +74,7 @@
 \begin{document}
 \title{\emph{To Do List} documentation}
 \author{Chris Warrick}
-\date{2016-01-01 (v2016.01)}
+\date{2016-08-23 (v2016.08)}
 \maketitle
 \tableofcontents{}
 
@@ -248,7 +246,12 @@ In order to generate a customized copy of the list, you need:
 
 \begin{itemize}
 \item A copy of Helvetica Neue \textbf{or} \TeX{} Gyre Heros on your system (system font, not \TeX{} font!)
-\item Lua\LaTeX{} or Xe\LaTeX{} installed on your system
+
+Please note that \textsf{Helvetica Neue OTF} is used as the font name for Helvetica Neue. Change this to the name of the Helvetica Neue font on your system.
+
+Mac users have to install FontForge and convert the dfont version to \texttt{.otf} files; make sure to change all three names in the \textsf{Element > Font Info…} window and add \textsf{OTF} to the font name.
+
+\item Lua\LaTeX{} installed on your system
 \item A basic understanding on the \TeX{}/\LaTeX{} syntax, special characters and commands
 \end{itemize}
 
@@ -307,7 +310,7 @@ Here is a sample line:
 
 \hskip3em\ltcs{trd}\ltvh{1}\ltvh{0}\ltvh{2}\ltvh{Q}\ltvh{Sample Task}\ltvh{12}\ltvh{31}\ltvh{Extra notes}
 
-This results in the creation of the \textsf{1}st task, \textsf{Sample Task}, which is incomplete (\textsf{\textcolor{backgray}{\fbox{C}}}), with priority \textsf{\textcolor{backgray}{\fbox{1}\sps\fcb{2}\sps\fbox{3}}}, its tag set to \textsf{Q}, due on 2015-\textsf{12}-\textsf{31}, including some \textsf{Extra notes}.
+This results in the creation of the \textsf{1}st task, \textsf{Sample Task}, which is incomplete (\textsf{\textcolor{backgray}{\fbox{C}}}), with priority \textsf{\textcolor{backgray}{\fbox{1}\sps\fcb{2}\sps\fbox{3}}}, its tag set to \textsf{Q}, due on \the\year-\textsf{12}-\textsf{31}, including some \textsf{Extra notes}.
 
 As an alternative, empty lists can use a shorter command that produces an empty row, which takes only the number:
 
@@ -324,16 +327,18 @@ The last three lines of \ltcs{todoprint} MUST be notes.  Each line is defined by
 
 Where \emph{contents} is the contents of this line.  You MAY leave the contents empty.  You MUST watch the line length; the list does \textbf{not} offer text reflowing.  A line that is too long will \textbf{break the layout}.
 
-\section{\emph{For experts:} Editing the \TeX{} code itself}
+\section{\emph{For experts:} Editing the \TeX{} and Lua code itself}
 
 Actually editing the underlying \TeX{} code in \texttt{todolist.tex} is hard and requires some expert knowledge and a lot of tinkering.  Some of the things are implemented using kludges, or rely on some faulty behavior.
+
+The \ltc{trd}{} and \ltc{tr}{} functions are implemented in Lua code (\texttt{todolist.lua}) as of version 2016.08. Most modifications can be made there, but layout changes still need to be reflected in \texttt{todolist.tex}.
 
 For example, you need to make sure that \ltcs{todowidth} is defined properly.  The definition depends on the font used, and is determined (\(\neq\) calculated!) by manually adjusting the value until the \ltcs{titlerule} and the black table boundary line up.  Another metric you need to take care of is \ltcs{todotitleskip}, which is used so the number box and the Tag box line up — in \emph{both} fonts, if possible.
 
 \chapter{Copyright and Licensing}
 \label{lic}
 
-\section{\TeX{} code and the documentation}
+\section{\TeX{}/Lua code and the documentation}
 
 Copyright © 2013–2016, Chris Warrick.  \\
 All rights reserved.

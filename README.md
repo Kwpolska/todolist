@@ -1,12 +1,12 @@
-Chris Warrick’s LaTeX Todo List
-===============================
+Chris Warrick’s LaTeX To Do List
+================================
 
 I believe that the best way to manage things to do is an analog piece of
 paper.  Those pieces of paper come out of a nicely crafted template,
-courtesy of LuaLaTeX (or XeLaTeX).
+courtesy of LuaLaTeX.
 
-I do not want to use LuaLaTeX/XeLaTeX!
-======================================
+I do not want to use LuaLaTeX!
+==============================
 
 [An empty template][ghrel] is available on GitHub.  You can use it if
 you do not want to customize it in any way.
@@ -24,7 +24,7 @@ In this distribution
 * `todolist/todolist.tex` — the actual template
 * `todoentries/todoentries.tex` — a sample file in which you can specify
   your todo list entries
-* `LICENSE-TEX` — license for the `.tex` files (3-clause BSD)
+* `LICENSE-TEX` — license for the `.tex` and `.lua' files (3-clause BSD)
 * `LICENSE-PDF` — license for [the `.pdf` files on GitHub][ghrel]
   (**custom derivative** of the 3-clause BSD license)
 * `README.md` — documentation
@@ -35,8 +35,8 @@ In this distribution
 License
 =======
 
-For the `.tex` files
---------------------
+For the `.tex` and `.lua` files
+-------------------------------
 
 Copyright © 2013–2016, Chris Warrick.
 All rights reserved.

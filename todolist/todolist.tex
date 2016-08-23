@@ -1,7 +1,8 @@
 % !TEX TS-program = lualatex
 % !TEX encoding = UTF-8 Unicode
 \documentclass[a4paper,english]{article}
-% Copyright © 2013–2015, Chris Warrick.
+% LaTeX To Do List
+% Copyright © 2013–2016, Chris Warrick.
 % See /LICENSE (in the distribution) for licensing information.
 
 %%% SETTINGS FOR THE TODOLIST
@@ -10,7 +11,7 @@
     %% 1 = include a todoentries.tex file (a sample is included with the distribution)
     \def \todousefile      {1}
     %% If you chose 1, type in the path here:
-    \def \todoentriespath  {/home/kwpolska/todoentries.tex} %../todoentries/todoentries.tex}
+    \def \todoentriespath  {/Users/kwpolska/todoentries.tex} %../todoentries/todoentries.tex}
 %% END SETTINGS IF YOU CHOSE 1 — IGNORE ANYTHING BELOW THIS POINT
 %% If you chose 0, configure here:
     % Which todolist in the year is this? [0-99 inclusive]
@@ -31,13 +32,12 @@
 \else
 \def \todoprint{\tr{1}\tr{2}\tr{3}\tr{4}\tr{5}\tr{6}\tr{7}\tr{8}\tr{9}\tr{10}\tr{11}\tr{12}\tr{13}\tr{14}\tr{15}\tr{16}\tr{17}\tr{18}\tr{19}\tr{20}\tr{21}\tr{22}\tr{23}\tr{24}\tr{25}\tr{26}\tr{27}\tr{28}\tr{29}\tr{30}\tr{31}\tr{32}\tr{33}\tr{34}\arrayrulecolor{black}\tr{35}\nr{}\nr{}\nr{}}
 \fi
-\usepackage{fixltx2e}
 \usepackage{fontspec}
 \usepackage{polyglossia}
 
 % Sadly, Helvetica Neue and TeX Gyre Heros are not metrics-compatible.
 \ifnum\todohelv=1
-\setmainfont[Ligatures=TeX]{Helvetica Neue}
+\setmainfont[Ligatures=TeX]{Helvetica Neue OTF}
 \def \todosize {30.03em}
 \def \todotitleskip {6.91pt}
 \def \todosub  {\hskip1em|\kern-2.5pt—\space}
@@ -48,7 +48,8 @@
 \def \todosub  {\hskip1em|\kern-1.5pt–\space}
 \fi
 
-\usepackage{stringstrings}
+\usepackage{luacode}
+\luadirect{require("todolist.lua")}
 \setmonofont[]{\todomonofont}
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
@@ -68,26 +69,14 @@
 
 \usepackage{titlesec}
 \setlength{\fboxsep}{1pt}
-\newcommand{\sps}[0]{\hskip2pt}	
+\newcommand{\sps}[0]{\hskip2pt}
 \definecolor{ngray}{gray}{0.30}
 \definecolor{tabgray}{gray}{0.65}
 \definecolor{backgray}{gray}{0.55}
 \definecolor{dategray}{gray}{0.85}
-\newcommand{\mone}[1]{\substring{#1}{1}{1}}
 \newcommand{\fcb}[1]{\fcolorbox{backgray}{black}{#1}}
-\newcommand{\trd}[8]{#1&
-\centering\textcolor{backgray}{\sps\stringlength[q]{#2}\ifnum\theresult=1{}\ifnum#2=1\fcb{C}\else\fbox{C}\fi\else\fbox{C}\fi\sps}&
-\stringlength[q]{#3}\ifnum\theresult=0\textcolor{backgray}{\sps\fbox{1}\sps\fbox{2}\sps\fbox{3}\sps}\else\textcolor{backgray}{\sps\ifnum#3=1\fcb{1}\else\fbox{1}\fi\sps\ifnum#3=2\fcb{2}\else\fbox{2}\fi\sps\ifnum#3=3\fcb{3}\else\fbox{3}\fi\sps}\fi&
-\centering\stringlength[q]{#4}\ifnum\theresult=0\textcolor{backgray}{T}\else{}#4\fi&
-#5&
-\phantom{|}\todoyear\phantom{|}&
-\centering\stringlength[q]{#6}\ifnum\theresult=0\textcolor{backgray}{M}\else\ifnum\theresult=1 0\else\substring{#6}{1}{1}\fi\fi&
-\centering\stringlength[q]{#6}\ifnum\theresult=0\textcolor{backgray}{M}\else\ifnum\theresult=1 \substring{#6}{1}{1}\else\substring{#6}{2}{2}\fi\fi&
-\centering\stringlength[q]{#7}\ifnum\theresult=0\textcolor{backgray}{D}\else\ifnum\theresult=1 0\else\substring{#7}{1}{1}\fi\fi&
-\centering\stringlength[q]{#7}\ifnum\theresult=0\textcolor{backgray}{D}\else\ifnum\theresult=1 \substring{#7}{1}{1}\else\substring{#7}{2}{2}\fi\fi&
-#8
-\\\hline}
-\newcommand{\tr}[1]{\trd{#1}{}{}{}{}{}{}{}}
+\newcommand{\trd}[8]{\luadirect{todorow(#1, \luastringN{#2}, \luastringN{#3}, \luastringN{#4}, \luastringN{#5}, \luastringN{#6}, \luastringN{#7}, \luastringN{#8})}}
+\newcommand{\tr}[1]{\luadirect{todorow(#1, "", "", "", "", "", "", "")}}
 \newcommand{\nr}[1]{\arrayrulecolor{tabgray}\multicolumn{10}{l}{#1}\\\hline}
 \newcommand{\p}[1]{\texttt{#1}}
 \makeatletter
