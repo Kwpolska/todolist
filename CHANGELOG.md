@@ -1,3 +1,11 @@
+v2017.01
+========
+
+* Rewrite displaying `\todonumber` in Lua
+* Add vim modelines to disable text wrapping
+* Set the © fields to 2017
+* Regenerate the PDFs for GitHub to say 2017
+
 v2016.08
 ========
 

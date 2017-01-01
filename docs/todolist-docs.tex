@@ -70,11 +70,12 @@
 \newcommand{\ltv}[1]{\texttt{\{#1\}}}
 \newcommand{\ltve}[1]{\texttt{\{}\emph{#1}\texttt{\}}}
 \newcommand{\ltvh}[1]{\texttt{\{}\textsf{#1}\texttt{\}}}
+\newcommand{\staticyear}[0]{2017}
 \def \todosize {30.03em}
 \begin{document}
 \title{\emph{To Do List} documentation}
 \author{Chris Warrick}
-\date{2016-08-23 (v2016.08)}
+\date{2017-01-01 (v2017.01)}
 \maketitle
 \tableofcontents{}
 
@@ -166,7 +167,7 @@ This is the task itself.  You can insert \ltc{todosub}{} to get an indent and a 
 \eg{
 \begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}l}
 \arrayrulecolor{tabgray}\cline{1-5}
-\phantom{|}\the\year\phantom{|} &
+\phantom{|}\staticyear\phantom{|} &
 \centering \textcolor{backgray}{M} &
 \centering \textcolor{backgray}{M} &
 \centering \textcolor{backgray}{D} &
@@ -174,7 +175,7 @@ This is the task itself.  You can insert \ltc{todosub}{} to get an indent and a 
 \cline{1-5}
 \end{tabular} \begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}@{}p{1.5em}@{}!{\color{dategray}\vline}@{}p{1.5em}@{}!{\color{tabgray}\vline}l}
 \arrayrulecolor{tabgray}\cline{1-5}
-\phantom{|}\the\year\phantom{|} &
+\phantom{|}\staticyear\phantom{|} &
 \centering 1 &
 \centering 2 &
 \centering 3 &
@@ -189,7 +190,7 @@ The Due Date is split into 3 fields:
 
 \iid{\rm n/a (uses \ltcs{todoyear})} \\
 \eg{\begin{tabular}{!{\color{tabgray}\vline}@{}c@{}!{\color{tabgray}\vline}}
-\arrayrulecolor{tabgray}\hline{}\phantom{|}\the\year\phantom{|}\\\hline\end{tabular}}
+\arrayrulecolor{tabgray}\hline{}\phantom{|}\staticyear\phantom{|}\\\hline\end{tabular}}
 
 The year is always printed automatically, even in “empty” lists.  (A New Year is a great occasion to complete all old tasks!)
 
@@ -269,7 +270,7 @@ A setting is written as a \TeX-style definition, eg. \texttt{\ltcs{def} \ltcs{to
 The following things can be customized with the basic customization:
 
 \begin{enumerate}
-\item \ltcs{todonumber} — Number of the to-do list (displayed as \sf\large\color{tabgray}\fbox{\hskip0.388em\color{white}0\color{ngray}1}\hskip0.1em/\the\year\color{black}\rm\normalsize; \emph{default} \ltv{1})
+\item \ltcs{todonumber} — Number of the to-do list (displayed as \sf\large\color{tabgray}\fbox{\hskip0.388em\color{white}0\color{ngray}1}\hskip0.1em/\staticyear\color{black}\rm\normalsize; \emph{default} \ltv{1})
 \begin{enumerate}
  \item \ltcs{todonumempty} — If set to \ltv{1}, the field will be left empty so you can write it in pen. (\emph{default} \ltv{0})
  \item \ltcs{todonumhide} — If set to \ltv{1}, the number/year field will not be displayed. (\emph{default} \ltv{0})
@@ -310,7 +311,7 @@ Here is a sample line:
 
 \hskip3em\ltcs{trd}\ltvh{1}\ltvh{0}\ltvh{2}\ltvh{Q}\ltvh{Sample Task}\ltvh{12}\ltvh{31}\ltvh{Extra notes}
 
-This results in the creation of the \textsf{1}st task, \textsf{Sample Task}, which is incomplete (\textsf{\textcolor{backgray}{\fbox{C}}}), with priority \textsf{\textcolor{backgray}{\fbox{1}\sps\fcb{2}\sps\fbox{3}}}, its tag set to \textsf{Q}, due on \the\year-\textsf{12}-\textsf{31}, including some \textsf{Extra notes}.
+This results in the creation of the \textsf{1}st task, \textsf{Sample Task}, which is incomplete (\textsf{\textcolor{backgray}{\fbox{C}}}), with priority \textsf{\textcolor{backgray}{\fbox{1}\sps\fcb{2}\sps\fbox{3}}}, its tag set to \textsf{Q}, due on \staticyear-\textsf{12}-\textsf{31}, including some \textsf{Extra notes}.
 
 As an alternative, empty lists can use a shorter command that produces an empty row, which takes only the number:
 
@@ -331,7 +332,7 @@ Where \emph{contents} is the contents of this line.  You MAY leave the contents 
 
 Actually editing the underlying \TeX{} code in \texttt{todolist.tex} is hard and requires some expert knowledge and a lot of tinkering.  Some of the things are implemented using kludges, or rely on some faulty behavior.
 
-The \ltc{trd}{} and \ltc{tr}{} functions are implemented in Lua code (\texttt{todolist.lua}) as of version 2016.08. Most modifications can be made there, but layout changes still need to be reflected in \texttt{todolist.tex}.
+The \ltc{trd}{} and \ltc{tr}{} functions are implemented in Lua code (\texttt{todolist.lua}) as of version 2016.08. Displaying the todo number is implemented in Lua code as of version 2017.01. Most modifications can be made there, but layout changes still need to be reflected in \texttt{todolist.tex}.
 
 For example, you need to make sure that \ltcs{todowidth} is defined properly.  The definition depends on the font used, and is determined (\(\neq\) calculated!) by manually adjusting the value until the \ltcs{titlerule} and the black table boundary line up.  Another metric you need to take care of is \ltcs{todotitleskip}, which is used so the number box and the Tag box line up — in \emph{both} fonts, if possible.
 
@@ -340,7 +341,7 @@ For example, you need to make sure that \ltcs{todowidth} is defined properly.  T
 
 \section{\TeX{}/Lua code and the documentation}
 
-Copyright © 2013–2016, Chris Warrick.  \\
+Copyright © 2013–2017, Chris Warrick.  \\
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -377,7 +378,7 @@ OF THIS PRODUCT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 \section{Sample PDFs}
 
-Copyright © 2013–2016, Chris Warrick. \\
+Copyright © 2013–2017, Chris Warrick. \\
 All rights reserved.
 
 Redistribution and use in binary form, with or without modification,
@@ -421,3 +422,4 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS PRODUCT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 \end{document}
+% vim: textwidth=0

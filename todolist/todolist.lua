@@ -1,5 +1,5 @@
 -- LaTeX To Do List (Lua companion)
--- Copyright © 2013–2016, Chris Warrick.
+-- Copyright © 2013–2017, Chris Warrick.
 -- See /LICENSE (in the distribution) for licensing information.
 
 PLACEHOLDER = "\\textcolor{backgray}{%s}"
@@ -53,12 +53,15 @@ function todorow(number, completed, priority, tag, task, month, day, notes)
 end
 
 
-function todorow_d(text, number)
-    if number == 5 then
-        tex.print("Number is five")
+function todonumberformat(number_s, empty)
+    if empty == "1" or number_s == "" then
+        tex.print([[\color{white}00]])
     else
-        tex.print("Number ain’t 5")
+        number = tonumber(number_s)
+        if number < 9 then
+            tex.print(string.format([[\color{white}0\color{ngray}%d]], number))
+        else
+            tex.print(string.format([[\color{ngray}%d]], number))
+        end
     end
-
-    tex.print(string.format("\\par⌘ %s! ⌥ ()", text))
 end

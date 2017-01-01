@@ -2,7 +2,7 @@
 % !TEX encoding = UTF-8 Unicode
 \documentclass[a4paper,english]{article}
 % LaTeX To Do List
-% Copyright © 2013–2016, Chris Warrick.
+% Copyright © 2013–2017, Chris Warrick.
 % See /LICENSE (in the distribution) for licensing information.
 
 %%% SETTINGS FOR THE TODOLIST
@@ -82,7 +82,7 @@
 \makeatletter
 \begin{document}
 
-\Huge{} To Do\hskip\todotitleskip\large\ifnum\todonumhide=0\color{tabgray}\fbox{\hskip0.388em \ifnum\todonumempty=1\color{white}00\else\ifnum\todonumber<9 \color{white}0\fi\color{ngray}\todonumber\fi}\hskip0.1em/\todoyear\color{black}\fi\normalsize
+\Huge{} To Do\hskip\todotitleskip\large\ifnum\todonumhide=0\color{tabgray}\fbox{\hskip0.388em\luadirect{todonumberformat(\luastring{\todonumber}, \luastring{\todonumempty})}}\hskip0.1em/\todoyear\color{black}\fi\normalsize
 \titlerule\vspace{0.25pc}
 \thispagestyle{empty}
 \ifnum\todonumhide=0
@@ -96,3 +96,4 @@
 \todoprint
 \end{tabular}
 \end{document}
+% vim: textwidth=0
