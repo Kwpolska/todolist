@@ -1,3 +1,9 @@
+v2018.01
+========
+
+* Set the © fields to 2018
+* Regenerate the PDFs for GitHub to say 2018
+
 v2017.01
 ========
 
