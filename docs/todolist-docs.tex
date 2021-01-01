@@ -5,7 +5,7 @@
 \usepackage{polyglossia}
 \usepackage[final,factor=1100,stretch=10,shrink=10,protrusion,expansion]{microtype}
 \usepackage{lmodern}
-\setsansfont[]{Helvetica Neue OTF} % ligatures in sans-serifs are ugly and unnecessary.
+\setsansfont[]{Helvetica Neue} % ligatures in sans-serifs are ugly and unnecessary.
 \setmonofont[]{Consolas} % …and in monospace fonts, they are dumb
 %\newfontfamily{\helv}[Microtype,Ligatures={NoRequired,NoCommon,NoContextual},Numbers=Lining]{Helvetica}
 %\newcommand{\helvetica}[1]{{\helv #1}}
@@ -70,12 +70,12 @@
 \newcommand{\ltv}[1]{\texttt{\{#1\}}}
 \newcommand{\ltve}[1]{\texttt{\{}\emph{#1}\texttt{\}}}
 \newcommand{\ltvh}[1]{\texttt{\{}\textsf{#1}\texttt{\}}}
-\newcommand{\staticyear}[0]{2020}
+\newcommand{\staticyear}[0]{2021}
 \def \todosize {30.03em}
 \begin{document}
 \title{\emph{To Do List} documentation}
 \author{Chris Warrick}
-\date{2020-01-01 (v2020.01)}
+\date{2021-01-01 (v2021.01)}
 \maketitle
 \tableofcontents{}
 
@@ -248,11 +248,9 @@ In order to generate a customized copy of the list, you need:
 \begin{itemize}
 \item A copy of Helvetica Neue \textbf{or} \TeX{} Gyre Heros on your system (system font, not \TeX{} font!)
 
-Please note that \textsf{Helvetica Neue OTF} is used as the font name for Helvetica Neue. Change this to the name of the Helvetica Neue font on your system.
+In older versions, creating a special OTF copy of Helvetica Neue was required to use the macOS built-in copy of the font; this requirement no longer applies as of the 2021 version with recent LuaLaTeX versions.
 
-Mac users have to install FontForge and convert the dfont version to \texttt{.otf} files; make sure to change all three names in the \textsf{Element > Font Info…} window and add \textsf{OTF} to the font name.
-
-\item Lua\LaTeX{} installed on your system
+\item Lua\LaTeX{} installed on your system (LuaLaTeX-dev with HarfBuzz rendering is recommended)
 \item A basic understanding on the \TeX{}/\LaTeX{} syntax, special characters and commands
 \end{itemize}
 

@@ -1,3 +1,10 @@
+v2021.01
+========
+
+* Set the © fields to 2021
+* Regenerate the PDFs for GitHub to say 2021
+* Change Helvetica Neue font name back to `Helvetica Neue`
+
 v2020.01
 ========
 
