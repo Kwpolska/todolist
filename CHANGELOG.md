@@ -1,3 +1,9 @@
+v2022.01
+========
+
+* Set the © fields to 2022
+* Regenerate the PDFs for GitHub to say 2022
+
 v2021.01
 ========
 
